@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.siva.banking.dto.AccountDTO;
 import com.siva.banking.dto.AccountTypeDTO;
@@ -13,7 +14,7 @@ import com.siva.banking.exception.AccountGlobalException;
 import com.siva.banking.mapper.AccountMapper;
 import com.siva.banking.mapper.AccountTypeMapper;
 import com.siva.banking.repository.AccountTypeRepository;
-
+@Service
 public class AccountTypeServiceImpl implements AccountTypeService {
 
 	@Autowired
