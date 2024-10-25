@@ -26,16 +26,20 @@ public class AccountTransactionServiceImpl implements AccountTransactionService 
 	private AccountTransactionRepository accountTransactionRepository;
 
 	@Override
-	public AccountTransactionDTO getAccountTransactionByAccountId(Long id) {
+	public List<AccountTransactionDTO> getAccountTransactionByAccountId(Long id) {
 		// TODO Auto-generated method stub
 //The method orElseThrow(() -> {}) is undefined for the type List<AccountTransaction>
-		AccountTransaction accountTransaction = (AccountTransaction) accountTransactionRepository.findByAccount_AccountId(id);
-				if (accountTransaction == null ) {
+		List<AccountTransaction> accountTransactions =  accountTransactionRepository.findByAccount_AccountId(id);
+				if (accountTransactions == null ) {
 					new AccountGlobalException("Account does not exists");
 				}
-		AccountTransactionDTO accountTransactionDTO = AccountTransactionMapper
-				.mapToAccountTransactionDto(accountTransaction);
-		return accountTransactionDTO;
+				/*
+				 * AccountTransactionDTO accountTransactionDTO = AccountTransactionMapper
+				 * .mapToAccountTransactionDto(accountTransactions);
+				 */
+		return accountTransactions.stream()
+	            .map(AccountTransactionMapper::mapToAccountTransactionDto) // Maps each transaction to its DTO
+	            .collect(Collectors.toList()); // Collects the results into a list;
 	}
 
 	@Override

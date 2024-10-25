@@ -29,7 +29,7 @@ public class AccountTransactionController {
 	}
 
 	@RequestMapping("/account/{id}")
-	public ResponseEntity<AccountTransactionDTO> getAccountById(@PathVariable Long id) {
+	public ResponseEntity<List<AccountTransactionDTO>> getAccountById(@PathVariable Long id) {
 		return new ResponseEntity<>(accountTransactionService.getAccountTransactionByAccountId(id), HttpStatus.OK);
 	}
 
