@@ -6,7 +6,7 @@ import com.siva.banking.dto.AccountTransactionDTO;
 
 public interface AccountTransactionService {
 
-	AccountTransactionDTO getAccountTransactionByAccountId(Long id);
+	List<AccountTransactionDTO> getAccountTransactionByAccountId(Long id);
 
 	List<AccountTransactionDTO> getAllAccountTransactions();
 
